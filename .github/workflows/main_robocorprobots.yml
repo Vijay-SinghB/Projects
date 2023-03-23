@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'RobocorpRobots'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A6851E75A70846229E96491352A8B43A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1DB9840929B44637BE36DC1B2046F5E3 }}
