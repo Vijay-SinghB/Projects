@@ -1,21 +1,16 @@
-from flask import Flask, request
+from flask import Flask, request,abort
 import requests
 
 app = Flask(__name__)
 
-@app.route("/webhook", methods=["POST"])
+@app.route('/webhook', methods=['POST'])
 def webhook():
-    data = request.json
-    event_type = data["event_type"]
-    if event_type in ["process run", "Step run", "assistant run", "Robot run agent"]:
-        robot_name = "Azure_User_Enable_Disable"
-        response = requests.post(f"https://api.eu1.robocorp.com/start-run/{robot_name}", json=data)
-        if response.status_code == 200:
-            return "Robot run started."
+        if request.method == 'POST':
+            print(request.json)
+			return 'success', 200
         else:
-            return f"Failed to start robot run. Error: {response.text}", 500
-    else:
-        return f"Unsupported event type: {event_type}", 400
+            abort(400)
+    
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
