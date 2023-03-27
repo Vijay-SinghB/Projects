@@ -9,7 +9,7 @@ def webhook():
     event_type = data["event_type"]
     if event_type in ["process run", "Step run", "assistant run", "Robot run agent"]:
         robot_name = "Azure_User_Enable_Disable"
-        response = requests.post(f"https://api.robocorp.com/start-run/{robot_name}", json=data)
+        response = requests.post(f"https://api.eu1.robocorp.com/start-run/{robot_name}", json=data)
         if response.status_code == 200:
             return "Robot run started."
         else:
